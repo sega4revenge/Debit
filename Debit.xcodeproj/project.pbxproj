@@ -7,21 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1746CF9F2D34FE0CD66730 /* Pods_Debit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F6A31005021A3743DA7E75 /* Pods_Debit.framework */; };
+		8A28457621251F4100A66409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A28457521251F4100A66409 /* Assets.xcassets */; };
+		8A28457821255A6000A66409 /* FirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A28457721255A6000A66409 /* FirstCell.swift */; };
 		8A4155D2211BD4480039FF41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4155D1211BD4480039FF41 /* AppDelegate.swift */; };
-		8A4155D4211BD4480039FF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4155D3211BD4480039FF41 /* ViewController.swift */; };
+		8A4155D4211BD4480039FF41 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4155D3211BD4480039FF41 /* LoginController.swift */; };
 		8A4155D7211BD4480039FF41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4155D5211BD4480039FF41 /* Main.storyboard */; };
-		8A4155D9211BD4490039FF41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4155D8211BD4490039FF41 /* Assets.xcassets */; };
 		8A4155DC211BD4490039FF41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4155DA211BD4490039FF41 /* LaunchScreen.storyboard */; };
+		8A55895C21211C7200DF03BE /* CornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55895B21211C7200DF03BE /* CornerButton.swift */; };
+		8A5A32252121352700FDC964 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A32242121352700FDC964 /* Toast.swift */; };
+		8A5A32272121355000FDC964 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A32262121355000FDC964 /* ToastView.swift */; };
+		8A5A32292121356400FDC964 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A32282121356400FDC964 /* ToastCenter.swift */; };
+		8A5A322B2121357B00FDC964 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A322A2121357B00FDC964 /* ToastWindow.swift */; };
+		8A5A322E212135CF00FDC964 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A3230212135CF00FDC964 /* Main.strings */; };
+		8A90AB4621215C5D00767EF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A90AB4521215C5D00767EF1 /* GoogleService-Info.plist */; };
+		8A90AB492121607B00767EF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB482121607B00767EF1 /* User.swift */; };
+		8A90AB4B2121660700767EF1 /* Debit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB4A2121660700767EF1 /* Debit.swift */; };
+		8A90AB4D2121677000767EF1 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB4C2121677000767EF1 /* ListTransform.swift */; };
+		8A90AB502121685C00767EF1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB4F2121685C00767EF1 /* UserViewModel.swift */; };
+		8A90AB522121688B00767EF1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB512121688B00767EF1 /* Response.swift */; };
+		8A90AB55212168FA00767EF1 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AB54212168FA00767EF1 /* AppUtils.swift */; };
+		8AF12D83212405B7008ADFFB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF12D82212405B7008ADFFB /* HomeController.swift */; };
+		8AF12D8521240E0A008ADFFB /* DebitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF12D8421240E0A008ADFFB /* DebitViewCell.swift */; };
+		8AF12D872124105D008ADFFB /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF12D862124105D008ADFFB /* Section.swift */; };
+		8AF12D8921241631008ADFFB /* CollapsibleTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF12D8821241631008ADFFB /* CollapsibleTableViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12F6A31005021A3743DA7E75 /* Pods_Debit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A28457521251F4100A66409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8A28457721255A6000A66409 /* FirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCell.swift; sourceTree = "<group>"; };
 		8A4155CE211BD4480039FF41 /* Debit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4155D1211BD4480039FF41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A4155D3211BD4480039FF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A4155D3211BD4480039FF41 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		8A4155D6211BD4480039FF41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8A4155D8211BD4490039FF41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A4155DB211BD4490039FF41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A4155DD211BD4490039FF41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A55895B21211C7200DF03BE /* CornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerButton.swift; sourceTree = "<group>"; };
+		8A5A32242121352700FDC964 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		8A5A32262121355000FDC964 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		8A5A32282121356400FDC964 /* ToastCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
+		8A5A322A2121357B00FDC964 /* ToastWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
+		8A5A3233212135F600FDC964 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		8A5A3234212136A100FDC964 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Main.strings; sourceTree = "<group>"; };
+		8A90AB4521215C5D00767EF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8A90AB482121607B00767EF1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8A90AB4A2121660700767EF1 /* Debit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debit.swift; sourceTree = "<group>"; };
+		8A90AB4C2121677000767EF1 /* ListTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
+		8A90AB4F2121685C00767EF1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		8A90AB512121688B00767EF1 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		8A90AB54212168FA00767EF1 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		8AF12D82212405B7008ADFFB /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		8AF12D8421240E0A008ADFFB /* DebitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebitViewCell.swift; sourceTree = "<group>"; };
+		8AF12D862124105D008ADFFB /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		8AF12D8821241631008ADFFB /* CollapsibleTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewHeader.swift; sourceTree = "<group>"; };
+		97A9EC905E3BD1845293CE51 /* Pods-Debit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debit/Pods-Debit.release.xcconfig"; sourceTree = "<group>"; };
+		F09D000DBDE37A4D559820F4 /* Pods-Debit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Debit/Pods-Debit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +70,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E1746CF9F2D34FE0CD66730 /* Pods_Debit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36730181A81613BC14934E97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F09D000DBDE37A4D559820F4 /* Pods-Debit.debug.xcconfig */,
+				97A9EC905E3BD1845293CE51 /* Pods-Debit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		38A654D8CABEFA4292E524E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12F6A31005021A3743DA7E75 /* Pods_Debit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8A4155C5211BD4480039FF41 = {
 			isa = PBXGroup;
 			children = (
+				8A5A3230212135CF00FDC964 /* Main.strings */,
 				8A4155D0211BD4480039FF41 /* Debit */,
 				8A4155CF211BD4480039FF41 /* Products */,
+				36730181A81613BC14934E97 /* Pods */,
+				38A654D8CABEFA4292E524E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +116,87 @@
 		8A4155D0211BD4480039FF41 /* Debit */ = {
 			isa = PBXGroup;
 			children = (
+				8A28457521251F4100A66409 /* Assets.xcassets */,
+				8AF12D81212405A0008ADFFB /* Controller */,
+				8A90AB53212168DE00767EF1 /* Utils */,
+				8A90AB4E2121684E00767EF1 /* ViewModel */,
+				8A90AB472121606B00767EF1 /* Model */,
+				8A90AB4521215C5D00767EF1 /* GoogleService-Info.plist */,
+				8A5A32222121351400FDC964 /* Library */,
+				8A55895A21211C5900DF03BE /* CustomView */,
 				8A4155D1211BD4480039FF41 /* AppDelegate.swift */,
-				8A4155D3211BD4480039FF41 /* ViewController.swift */,
 				8A4155D5211BD4480039FF41 /* Main.storyboard */,
-				8A4155D8211BD4490039FF41 /* Assets.xcassets */,
 				8A4155DA211BD4490039FF41 /* LaunchScreen.storyboard */,
 				8A4155DD211BD4490039FF41 /* Info.plist */,
 			);
 			path = Debit;
+			sourceTree = "<group>";
+		};
+		8A55895A21211C5900DF03BE /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8A55895B21211C7200DF03BE /* CornerButton.swift */,
+				8A28457721255A6000A66409 /* FirstCell.swift */,
+				8AF12D8421240E0A008ADFFB /* DebitViewCell.swift */,
+				8AF12D8821241631008ADFFB /* CollapsibleTableViewHeader.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		8A5A32222121351400FDC964 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8A5A32232121351A00FDC964 /* Toast */,
+				8A90AB4C2121677000767EF1 /* ListTransform.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8A5A32232121351A00FDC964 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				8A5A32242121352700FDC964 /* Toast.swift */,
+				8A5A32282121356400FDC964 /* ToastCenter.swift */,
+				8A5A322A2121357B00FDC964 /* ToastWindow.swift */,
+				8A5A32262121355000FDC964 /* ToastView.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		8A90AB472121606B00767EF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A90AB482121607B00767EF1 /* User.swift */,
+				8A90AB4A2121660700767EF1 /* Debit.swift */,
+				8AF12D862124105D008ADFFB /* Section.swift */,
+				8A90AB512121688B00767EF1 /* Response.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A90AB4E2121684E00767EF1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A90AB4F2121685C00767EF1 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A90AB53212168DE00767EF1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8A90AB54212168FA00767EF1 /* AppUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8AF12D81212405A0008ADFFB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A4155D3211BD4480039FF41 /* LoginController.swift */,
+				8AF12D82212405B7008ADFFB /* HomeController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A4155E0211BD4490039FF41 /* Build configuration list for PBXNativeTarget "Debit" */;
 			buildPhases = (
+				20ABD4CC04CD477D36B8A444 /* [CP] Check Pods Manifest.lock */,
 				8A4155CA211BD4480039FF41 /* Sources */,
 				8A4155CB211BD4480039FF41 /* Frameworks */,
 				8A4155CC211BD4480039FF41 /* Resources */,
+				976F55A293D753CB56CE2779 /* [CP] Embed Pods Frameworks */,
+				BFA22A45C92A74D62DA26962 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -106,6 +244,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 8A4155C5211BD4480039FF41;
 			productRefGroup = 8A4155CF211BD4480039FF41 /* Products */;
@@ -123,20 +262,129 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4155DC211BD4490039FF41 /* LaunchScreen.storyboard in Resources */,
-				8A4155D9211BD4490039FF41 /* Assets.xcassets in Resources */,
+				8A5A322E212135CF00FDC964 /* Main.strings in Resources */,
+				8A90AB4621215C5D00767EF1 /* GoogleService-Info.plist in Resources */,
 				8A4155D7211BD4480039FF41 /* Main.storyboard in Resources */,
+				8A28457621251F4100A66409 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20ABD4CC04CD477D36B8A444 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Debit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		976F55A293D753CB56CE2779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Debit/Pods-Debit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Highlighter/Highlighter.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlighter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debit/Pods-Debit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFA22A45C92A74D62DA26962 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Debit/Pods-Debit-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debit/Pods-Debit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A4155CA211BD4480039FF41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A4155D4211BD4480039FF41 /* ViewController.swift in Sources */,
+				8A55895C21211C7200DF03BE /* CornerButton.swift in Sources */,
+				8A4155D4211BD4480039FF41 /* LoginController.swift in Sources */,
+				8AF12D83212405B7008ADFFB /* HomeController.swift in Sources */,
 				8A4155D2211BD4480039FF41 /* AppDelegate.swift in Sources */,
+				8A90AB55212168FA00767EF1 /* AppUtils.swift in Sources */,
+				8A5A32252121352700FDC964 /* Toast.swift in Sources */,
+				8A90AB522121688B00767EF1 /* Response.swift in Sources */,
+				8A90AB492121607B00767EF1 /* User.swift in Sources */,
+				8A5A322B2121357B00FDC964 /* ToastWindow.swift in Sources */,
+				8A5A32292121356400FDC964 /* ToastCenter.swift in Sources */,
+				8AF12D8921241631008ADFFB /* CollapsibleTableViewHeader.swift in Sources */,
+				8A5A32272121355000FDC964 /* ToastView.swift in Sources */,
+				8A90AB4D2121677000767EF1 /* ListTransform.swift in Sources */,
+				8A90AB4B2121660700767EF1 /* Debit.swift in Sources */,
+				8A28457821255A6000A66409 /* FirstCell.swift in Sources */,
+				8AF12D872124105D008ADFFB /* Section.swift in Sources */,
+				8A90AB502121685C00767EF1 /* UserViewModel.swift in Sources */,
+				8AF12D8521240E0A008ADFFB /* DebitViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +407,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		8A5A3230212135CF00FDC964 /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A5A3233212135F600FDC964 /* vi */,
+				8A5A3234212136A100FDC964 /* Base */,
+			);
+			name = Main.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -166,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -213,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -226,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -267,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -278,11 +537,13 @@
 		};
 		8A4155E1211BD4490039FF41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F09D000DBDE37A4D559820F4 /* Pods-Debit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287YL398QC;
 				INFOPLIST_FILE = Debit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,11 +557,13 @@
 		};
 		8A4155E2211BD4490039FF41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97A9EC905E3BD1845293CE51 /* Pods-Debit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 287YL398QC;
 				INFOPLIST_FILE = Debit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

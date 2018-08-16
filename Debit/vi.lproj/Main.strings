@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Quản lý khoản cho vay và khoản vay của bạn"; ObjectID = "hy9-Ib-ghN"; */
+"hy9-Ib-ghN.text" = "Quản lý khoản cho vay và khoản vay của bạn";
+
+/* Class = "UIButton"; normalTitle = "Facebook"; ObjectID = "i32-gd-nN5"; */
+"i32-gd-nN5.normalTitle" = "Facebook";
+
+/* Class = "UILabel"; text = "Đăng nhập bằng"; ObjectID = "syd-TT-AQc"; */
+"syd-TT-AQc.text" = "Đăng nhập bằng";
+
+/* Class = "UIButton"; normalTitle = "Google"; ObjectID = "waa-nZ-G0s"; */
+"waa-nZ-G0s.normalTitle" = "Google";
+
+/* Class = "UILabel"; text = "Sổ ghi nợ"; ObjectID = "zF9-LW-fGS"; */
+"zF9-LW-fGS.text" = "Sổ ghi nợ";

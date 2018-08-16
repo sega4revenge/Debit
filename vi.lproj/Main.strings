@@ -1,0 +1,17 @@
+/* 
+  Main.strings
+  Debit
+
+  Created by Tô Tử Siêu on 8/13/18.
+  Copyright © 2018 Tô Tử Siêu. All rights reserved.
+*/
+
+
+
+
+
+
+
+
+"networkerror" = "Kết nối đến server bị lỗi";
+"userdecline" = "Người dùng từ chối đăng nhập";
