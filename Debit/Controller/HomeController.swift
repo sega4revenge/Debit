@@ -8,6 +8,20 @@
 
 import UIKit
 import Kingfisher
+
+extension UISearchBar {
+    func changeSearchBarColor(color : UIColor) {
+        for subView in self.subviews {
+            for subSubView in subView.subviews {
+                if subSubView.conforms(to: UITextInputTraits.self) {
+                    let textField = subSubView as! UITextField
+                    textField.backgroundColor = color
+                    break
+                }
+            }
+        }
+    }
+}
 class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchBarDelegate {
     var user : User = AppUtils.getInstance().objects(User.self).first!
     func updateSearchResults(for searchController: UISearchController) {
@@ -20,8 +34,8 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var itemsection = [Section]()
     var filteredData = [Section]()
     @IBOutlet weak var UI_tableview: UITableView!
-  
-    
+    var inSearchMode = false
+     var searchstring : String = ""
     override func viewDidLoad() {
         setGradientBackground()
         super.viewDidLoad()
@@ -81,20 +95,55 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
+       
+     
+           searchBar.sizeToFit()
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
+        
+       
+           searchBar.sizeToFit()
         
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar .resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+      
+      
+           searchBar.sizeToFit()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar .resignFirstResponder()
+       
         searchBar.setShowsCancelButton(false, animated: true)
+      
+           searchBar.sizeToFit()
         
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            
+            view.endEditing(true)
+            searchstring = ""
+            let range = NSMakeRange(0, self.UI_tableview.numberOfSections)
+            let sections = NSIndexSet(indexesIn: range)
+            self.UI_tableview.reloadSections(sections as IndexSet, with: .automatic)
+            
+        } else {
+            
+            inSearchMode = true
+            searchstring = searchText
+            filteredData[1].items = itemsection[1].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
+            filteredData[2].items = itemsection[2].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
+            filteredData[3].items = itemsection[3].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
+            let range = NSMakeRange(0, self.UI_tableview.numberOfSections)
+            let sections = NSIndexSet(indexesIn: range)
+            self.UI_tableview.reloadSections(sections as IndexSet, with: .automatic)
+        }
     }
     func setGradientBackground() {
 //        let colorTop =  UIColor(red: 64/255.0, green: 70/255.0, blue: 84/255.0, alpha: 1.0).cgColor
@@ -143,7 +192,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func configUI(){
         UI_searchbar.layer.borderWidth = 1
         UI_searchbar.layer.borderColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
-        
+          UI_searchbar.changeSearchBarColor(color: UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1))
         UI_searchbar.returnKeyType = UIReturnKeyType.done
         // border
         let searchBarStyle = UI_searchbar.value(forKey: "searchField") as? UITextField
@@ -160,8 +209,13 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //            return filteredData[section].collapsed ? 0 : filteredData[section].items.count
 //
 //        }
-        return itemsection[section].collapsed ? 0 : itemsection[section].items.count
+//        return itemsection[section].collapsed ? 0 : itemsection[section].items.count
 //         return listDebit.count
+        if inSearchMode {
+            return filteredData[section].collapsed ? 0 : filteredData[section].items.count
+            
+        }
+        return itemsection[section].collapsed ? 0 : itemsection[section].items.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,7 +224,8 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section == 0)
         {
-            return 300
+            return 350
+            
         }
         else
         {
@@ -209,7 +264,15 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             
             //            data = listDebit[indexPath.row]
-            data = itemsection[indexPath.section].items[indexPath.row]
+            if inSearchMode {
+                
+                data = filteredData[indexPath.section].items[indexPath.row]
+                
+            } else {
+                
+                data = itemsection[indexPath.section].items[indexPath.row]
+            }
+         
             
             cell.name.text = data.name
             cell.ammount.text = data.ammount! + " đ"
@@ -282,7 +345,14 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let header = UI_tableview.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
 
 
+        if inSearchMode {
+            
+            header.titleLabel.text = "\(filteredData[section].name) (\(filteredData[section].items.count))"
+            
+        } else {
+            
             header.titleLabel.text = "\(itemsection[section].name) (\(itemsection[section].items.count))"
+        }
 
         
         header.section = section

@@ -11,7 +11,7 @@ import RealmSwift
 typealias DownloadComplete = () -> ()
 class AppUtils: NSObject {
     static var userviewmodel : UserViewModel? = nil
-    static let BASE_URL = "http://192.168.1.22:8050/api/"
+    static let BASE_URL = "http://192.168.1.237:8050/api/"
     static let FACEBOOK = 1
     static let GOOGLE = 2
     static var realm : Realm? = nil
