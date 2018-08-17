@@ -12,7 +12,14 @@ class FirstCell: UITableViewCell {
     
     
     @IBOutlet weak var UI_avatar: UIImageView!
+    @IBOutlet weak var view_forrent: UIView!
+    @IBOutlet weak var view_rent: UIView!
+    @IBOutlet weak var total_amount_forrent: UILabel!
+    @IBOutlet weak var total_amount_rent: UILabel!
+    @IBOutlet weak var total_imcome_forrent: UILabel!
+    @IBOutlet weak var total_income_rent: UILabel!
     
+    @IBOutlet weak var segmented_control: UISegmentedControl!
     @IBOutlet weak var UI_type: UILabel!
     @IBOutlet weak var UI_name: UILabel!
     override func awakeFromNib() {

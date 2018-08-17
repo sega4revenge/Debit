@@ -19,7 +19,7 @@ class Debit: Object,Mappable {
     @objc dynamic var type: Int = 0
      @objc dynamic  var timestart: Double = 0.0
      @objc dynamic  var timeend: Double = 0.0
-     @objc dynamic  var ammount: String?
+     @objc dynamic  var ammount: Double = 0.0
      @objc dynamic  var typeammount: Int = 0
     @objc dynamic var notification : Bool = false
 

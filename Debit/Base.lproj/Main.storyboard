@@ -228,7 +228,6 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="bottom" secondItem="57c-CI-8hU" secondAttribute="bottom" id="19B-wf-zxJ"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="57c-CI-8hU" secondAttribute="trailing" id="4VY-EN-zbT"/>
-                                                                                <constraint firstItem="3TN-t1-itO" firstAttribute="height" secondItem="ciN-9h-9nH" secondAttribute="height" multiplier="0.5" id="9ua-sd-NzS"/>
                                                                                 <constraint firstItem="57c-CI-8hU" firstAttribute="leading" secondItem="ciN-9h-9nH" secondAttribute="leading" id="SJt-cp-pxj"/>
                                                                                 <constraint firstItem="57c-CI-8hU" firstAttribute="top" secondItem="ciN-9h-9nH" secondAttribute="top" id="nVo-bD-SCs"/>
                                                                             </constraints>
@@ -312,12 +311,14 @@
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="57c-CI-8hU" firstAttribute="width" secondItem="F3l-i3-PNc" secondAttribute="width" id="DZM-Eq-YUj"/>
+                                                                    </constraints>
                                                                 </stackView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="2R0-EO-ivL" firstAttribute="top" secondItem="cF3-KY-H3s" secondAttribute="top" id="52M-oX-DUP"/>
-                                                                <constraint firstItem="ciN-9h-9nH" firstAttribute="width" secondItem="cF3-KY-H3s" secondAttribute="width" multiplier="0.5" id="TJS-9z-HbT"/>
                                                                 <constraint firstItem="2R0-EO-ivL" firstAttribute="leading" secondItem="cF3-KY-H3s" secondAttribute="leading" id="kRn-2x-vly"/>
                                                                 <constraint firstAttribute="bottom" secondItem="2R0-EO-ivL" secondAttribute="bottom" id="mpx-rO-IRM"/>
                                                                 <constraint firstAttribute="trailing" secondItem="2R0-EO-ivL" secondAttribute="trailing" id="usY-EE-Znc"/>
@@ -334,7 +335,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7gn-3n-C9o">
-                                                                    <rect key="frame" x="184" y="113.00000000000001" width="47" height="41.666666666666671"/>
+                                                                    <rect key="frame" x="183.66666666666666" y="113.00000000000001" width="47" height="41.666666666666671"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-9i-uOh">
                                                                             <rect key="frame" x="0.0" y="0.0" width="47" height="21.666666666666668"/>
@@ -374,6 +375,9 @@
                                                                         <segment title="Đang vay (99999)"/>
                                                                     </segments>
                                                                     <color key="tintColor" red="0.36078431370000003" green="0.41176470590000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <connections>
+                                                                        <action selector="type_change:" destination="cz0-p7-86H" eventType="valueChanged" id="NDe-OM-89O"/>
+                                                                    </connections>
                                                                 </segmentedControl>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -415,6 +419,13 @@
                                             <outlet property="UI_avatar" destination="4rn-vo-Web" id="HHB-8G-veq"/>
                                             <outlet property="UI_name" destination="bkt-9i-uOh" id="iQz-zq-dGa"/>
                                             <outlet property="UI_type" destination="AtW-fp-ds9" id="MwN-dh-eJd"/>
+                                            <outlet property="segmented_control" destination="BmH-9r-ucL" id="aXn-Vm-Hgw"/>
+                                            <outlet property="total_amount_forrent" destination="9no-Wx-XKD" id="evN-pg-hLh"/>
+                                            <outlet property="total_amount_rent" destination="qwG-9x-SFG" id="shN-ic-wnt"/>
+                                            <outlet property="total_imcome_forrent" destination="0Ks-jf-8HM" id="s7b-zI-4BF"/>
+                                            <outlet property="total_income_rent" destination="vEv-kA-J6P" id="688-7P-vhg"/>
+                                            <outlet property="view_forrent" destination="ciN-9h-9nH" id="i5x-Yx-dUi"/>
+                                            <outlet property="view_rent" destination="Pnq-8Q-1lr" id="yBj-6c-yoa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="debit_cell" rowHeight="70" id="OYY-WG-vLg" customClass="DebitViewCell" customModule="Debit" customModuleProvider="target">
@@ -612,6 +623,6 @@
         <image name="ic_google" width="18" height="18"/>
         <image name="plus" width="1600" height="1600"/>
         <image name="rent" width="128" height="128"/>
-        <image name="settings" width="128" height="128"/>
+        <image name="settings" width="152" height="152"/>
     </resources>
 </document>

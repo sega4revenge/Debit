@@ -8,7 +8,7 @@
 
 import UIKit
 import Kingfisher
-
+import RealmSwift
 extension UISearchBar {
     func changeSearchBarColor(color : UIColor) {
         for subView in self.subviews {
@@ -25,12 +25,14 @@ extension UISearchBar {
 class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchBarDelegate {
     var user : User = AppUtils.getInstance().objects(User.self).first!
     func updateSearchResults(for searchController: UISearchController) {
-        ""
+        
     }
     
-   
+
+    
+    var selectedIndex : Int = 0
+    
     @IBOutlet weak var UI_searchbar: UISearchBar!
-    var listDebit = [Debit]()
     var itemsection = [Section]()
     var filteredData = [Section]()
     @IBOutlet weak var UI_tableview: UITableView!
@@ -47,51 +49,166 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             Section(name: "Quá hạn", items: [])
         ]
         filteredData = [
-             Section(name: "", items: []),
+             Section(name: "", items: [Debit()]),
             Section(name: "Đến hạn", items: []),
             Section(name: "Chưa đến hạn", items: []),
             Section(name: "Quá hạn", items: [])
         ]
-        let temp = Debit()
-        temp._id = "1"
-        temp.ammount = "300000"
-        temp.name = "Tô Tử Siêu"
-        temp.notification = false
-        temp.timestart = 1534343533
-        temp.timeend = 1534343533
-        temp.type = 0
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        listDebit.insert(temp, at: 0)
-        let temp2 = Debit()
-        temp2._id = "2"
-        temp2.ammount = "4500000"
-        temp2.name = "Bùi Thùy Trang"
-        temp2.notification = false
-        temp2.timestart = 1533916226
-        temp2.timeend = 1538295909
-        temp2.type = 1
-        
-        listDebit.insert(temp2, at: 0)
-        let temp3 = Debit()
-        temp3._id = "3"
-        temp3.ammount = "45000000"
-        temp3.name = "Hiển ml"
-        temp3.notification = false
-        temp3.timestart = 1539186626
-        temp3.timeend = 1540295910
-        temp3.type = 0
-        
-        listDebit.insert(temp3, at: 0)
+       
+        try! AppUtils.getInstance().write {
+            let temp = Debit()
+            temp._id = "1"
+            temp.ammount = 300000
+            temp.name = "Tô Tử Siêu"
+            temp.notification = false
+            temp.timestart = 1534343533
+            temp.timeend = 1534343533
+            temp.type = AppUtils.FORRENT
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            user.listdebit.insert(temp, at: 0)
+            let temp2 = Debit()
+            temp2._id = "2"
+            temp2.ammount = 4500000
+            temp2.name = "Bùi Thùy Trang"
+            temp2.notification = false
+            temp2.timestart = 1533916226
+            temp2.timeend = 1538295909
+            temp2.type = AppUtils.RENT
+            
+            user.listdebit.insert(temp2, at: 0)
+            let temp3 = Debit()
+            temp3._id = "3"
+            temp3.ammount = 45000000
+            temp3.name = "Hiển ml"
+            temp3.notification = false
+            temp3.timestart = 1539186626
+            temp3.timeend = 1540295910
+            temp3.type = AppUtils.FORRENT
+            user.listdebit.insert(temp3, at: 0)
+            print(user.listdebit)
+           AppUtils.getInstance().add(user, update: true)
+            
+            
+            
+        }
+    
         loadData()
         UI_tableview.delegate = self
         UI_tableview.dataSource = self
+     
         // Do any additional setup after loading the view.
+    }
+    
+    //======================     filter debit type
+    @IBAction func type_change(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            selectedIndex = 0
+          (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_forrent.isHidden = false
+              (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_rent.isHidden = false
+           if(searchstring != "")
+           {
+               filterwithString()
+            }
+            
+        case 1:
+             selectedIndex = 1
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_forrent.isHidden = false
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_rent.isHidden = true
+             if(searchstring != "")
+             {
+                filterwithStringType()
+            }
+             else{
+                filterwithType()
+            }
+        default:
+              selectedIndex = 2
+        
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_forrent.isHidden = true
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).view_rent.isHidden = false
+       
+              if(searchstring != "")
+              {
+                filterwithStringType()
+              }
+              else{
+                filterwithType()
+            }
+        }
+      reloadTable()
+      
+    }
+    func reloadTable(){
+      
+        reloadAmount(    cell: (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell))
+        UIView.performWithoutAnimation {
+            let contentOffset = UI_tableview.contentOffset
+            let range = NSMakeRange(1, 3)
+            let sections = NSIndexSet(indexesIn: range)
+            self.UI_tableview.reloadSections(sections as IndexSet, with: .none)
+            UI_tableview.layoutIfNeeded()
+            UI_tableview.setContentOffset(contentOffset, animated: false)
+        }
+      
+    }
+    func reloadAmount(cell : FirstCell){
+        if(!inSearchMode && selectedIndex == 0)
+        {
+            var first_ammount = itemsection[1].items.filter({$0.type == 1}).reduce(0, {$0 + $1.ammount})
+            var second_ammount = itemsection[2].items.filter({$0.type == 1}).reduce(0, {$0 + $1.ammount})
+            var third_ammount = itemsection[3].items.filter({$0.type == 1}).reduce(0, {$0 + $1.ammount})
+           cell.total_amount_forrent.text = "\(first_ammount + second_ammount + third_ammount) đ"
+            
+            first_ammount = itemsection[1].items.filter({$0.type == 2}).reduce(0, {$0 + $1.ammount})
+            second_ammount = itemsection[2].items.filter({$0.type == 2}).reduce(0, {$0 + $1.ammount})
+            third_ammount = itemsection[3].items.filter({$0.type == 2}).reduce(0, {$0 + $1.ammount})
+           cell.total_amount_rent.text = "\(first_ammount + second_ammount + third_ammount) đ"
+        }
+        else{
+            
+        }
+    }
+    func filterwithStringType()
+    {
+    filteredData[1].items = itemsection[1].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) && $0.type == selectedIndex })
+    filteredData[2].items = itemsection[2].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) && $0.type == selectedIndex })
+    filteredData[3].items = itemsection[3].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) && $0.type == selectedIndex })
+    }
+    func filterwithString()
+    {
+        filteredData[1].items = itemsection[1].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) })
+        filteredData[2].items = itemsection[2].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) })
+        filteredData[3].items = itemsection[3].items.filter({   ($0.name?.lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchstring.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchstring.lowercased()) != nil) })
+    }
+    func filterwithType()
+    {
+        filteredData[1].items = itemsection[1].items.filter({$0.type == selectedIndex})
+        filteredData[2].items = itemsection[2].items.filter({$0.type == selectedIndex})
+        filteredData[3].items = itemsection[3].items.filter({$0.type == selectedIndex})
+    }
+    func reloadsegment(){
+        if(!inSearchMode && selectedIndex == 0)
+        {
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Tất cả (\(itemsection[1].items.count + itemsection[2].items.count + itemsection[3].items.count))", forSegmentAt: 0)
+           (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Cho vay (\(itemsection[1].items.filter({$0.type == 1}).count + itemsection[2].items.filter({$0.type == 1}).count + itemsection[3].items.filter({$0.type == 1}).count))", forSegmentAt: 1)
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Đã vay (\(itemsection[1].items.filter({$0.type == 2}).count + itemsection[2].items.filter({$0.type == 2}).count + itemsection[3].items.filter({$0.type == 2}).count))", forSegmentAt: 2)
+          
+        }
+        else
+        {
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Tất cả (\(filteredData[1].items.count + filteredData[2].items.count + filteredData[3].items.count))", forSegmentAt: 0)
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Cho vay (\(filteredData[1].items.filter({$0.type == 1}).count + filteredData[2].items.filter({$0.type == 1}).count + filteredData[3].items.filter({$0.type == 1}).count))", forSegmentAt: 1)
+            (UI_tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! FirstCell).segmented_control.setTitle("Đã vay (\(filteredData[1].items.filter({$0.type == 2}).count + filteredData[2].items.filter({$0.type == 2}).count + filteredData[3].items.filter({$0.type == 2}).count))", forSegmentAt: 2)
+        }
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
@@ -129,26 +246,28 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             view.endEditing(true)
             searchstring = ""
-            let range = NSMakeRange(0, self.UI_tableview.numberOfSections)
-            let sections = NSIndexSet(indexesIn: range)
-            self.UI_tableview.reloadSections(sections as IndexSet, with: .automatic)
+              reloadsegment()
+           reloadTable()
             
         } else {
             
             inSearchMode = true
             searchstring = searchText
-            filteredData[1].items = itemsection[1].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
-            filteredData[2].items = itemsection[2].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
-            filteredData[3].items = itemsection[3].items.filter({$0.name?.lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timestart).lowercased().range(of:searchBar.text!.lowercased()) != nil || AppUtils.dayString(from: $0.timeend).lowercased().range(of:searchBar.text!.lowercased()) != nil})
-            let range = NSMakeRange(0, self.UI_tableview.numberOfSections)
-            let sections = NSIndexSet(indexesIn: range)
-            self.UI_tableview.reloadSections(sections as IndexSet, with: .automatic)
+            if(selectedIndex == 0)
+            {
+               filterwithString()
+            }
+            else{
+                 filterwithStringType()
+            }
+            reloadsegment()
+          reloadTable()
         }
     }
     func setGradientBackground() {
 //        let colorTop =  UIColor(red: 64/255.0, green: 70/255.0, blue: 84/255.0, alpha: 1.0).cgColor
 //        let colorBottom = UIColor(red: 58/255.0, green: 64/255.0, blue: 78/255.0, alpha: 1.0).cgColor
-            let colorBottom = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1.0).cgColor
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorBottom, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
@@ -157,24 +276,25 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     func loadData()  {
-        
-        for index in 0...listDebit.count - 1 {
+          let result = AppUtils.getInstance().objects(Debit.self).sorted(byKeyPath: "timeend", ascending: false)
+        print(result)
+        for index in 0...result.count - 1 {
             
-            if AppUtils.countDay(from: listDebit[index].timeend) < 0
+            if AppUtils.countDay(from: result[index].timeend) < 0
             {
-                itemsection[3].items.insert(listDebit[index], at: 0)
+                itemsection[3].items.insert(result[index], at: 0)
             }
                 
-            else if AppUtils.countDay(from: listDebit[index].timeend) == 0
+            else if AppUtils.countDay(from: result[index].timeend) == 0
             {
                 
-                itemsection[1].items.insert(listDebit[index], at: 0)
+                itemsection[1].items.insert(result[index], at: 0)
                
             }
                 
             else
             {
-                itemsection[2].items.insert(listDebit[index], at: 0)
+                itemsection[2].items.insert(result[index], at: 0)
               
             }
 //            if let section = itemsection.index(where: {$0.name == AppUtils.dayString(from : listDebit[index].timestart)}) {
@@ -190,6 +310,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
   
     }
     func configUI(){
+      
         UI_searchbar.layer.borderWidth = 1
         UI_searchbar.layer.borderColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
           UI_searchbar.changeSearchBarColor(color: UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1))
@@ -211,7 +332,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //        }
 //        return itemsection[section].collapsed ? 0 : itemsection[section].items.count
 //         return listDebit.count
-        if inSearchMode {
+        if inSearchMode || selectedIndex != 0 {
             return filteredData[section].collapsed ? 0 : filteredData[section].items.count
             
         }
@@ -254,7 +375,13 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 cell.UI_type.text = "Google"
                 cell.UI_type.textColor = UIColor.red
             }
-              cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            reloadAmount(  cell: cell)
+            
+            
+           cell.segmented_control.setTitle("Tất cả (\(itemsection[1].items.count + itemsection[2].items.count + itemsection[3].items.count))", forSegmentAt: 0)
+           cell.segmented_control.setTitle("Cho vay (\(itemsection[1].items.filter({$0.type == 1}).count + itemsection[2].items.filter({$0.type == 1}).count + itemsection[3].items.filter({$0.type == 1}).count))", forSegmentAt: 1)
+           cell.segmented_control.setTitle("Đã vay (\(itemsection[1].items.filter({$0.type == 2}).count + itemsection[2].items.filter({$0.type == 2}).count + itemsection[3].items.filter({$0.type == 2}).count))", forSegmentAt: 2)
             return cell
         }
         else
@@ -264,7 +391,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             
             //            data = listDebit[indexPath.row]
-            if inSearchMode {
+            if inSearchMode || selectedIndex != 0 {
                 
                 data = filteredData[indexPath.section].items[indexPath.row]
                 
@@ -275,11 +402,11 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
          
             
             cell.name.text = data.name
-            cell.ammount.text = data.ammount! + " đ"
+            cell.ammount.text = "\(data.ammount) đ"
             cell.start.text = AppUtils.dayString(from : data.timestart)
             cell.expired.text = AppUtils.dayString(from : data.timeend)
             switch data.type {
-            case 0:
+            case AppUtils.RENT:
                 cell.UI_ImageView?.image = UIImage(named: "rent")
                 cell.ammount.textColor = AppUtils.rentColor()
                 
@@ -345,7 +472,7 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let header = UI_tableview.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
 
 
-        if inSearchMode {
+        if inSearchMode || selectedIndex != 0{
             
             header.titleLabel.text = "\(filteredData[section].name) (\(filteredData[section].items.count))"
             
@@ -364,10 +491,10 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if(itemsection[section].collapsed == true)
         {
             switch (section) {
-            case 0:
+            case 1:
                 header.backgroundView?.backgroundColor = UIColor.red
                 header.titleLabel.textColor = UIColor.white
-            case 1:
+            case 2:
                 header.backgroundView?.backgroundColor = UIColor.init(red: 254/255, green: 193/255, blue: 7/255, alpha: 1)
                 header.titleLabel.textColor = UIColor.white
             default:
@@ -378,12 +505,12 @@ class HomeController: UIViewController,UITableViewDelegate,UITableViewDataSource
         else
         {
             switch section {
-            case 0:
+            case 1:
                header.backgroundView?.backgroundColor = UIColor(red: 247/255.0, green: 247/255.0, blue: 247/255.0, alpha: 1.0)
               
                    header.titleLabel.textColor = UIColor.init(red: 120/255, green: 120/255, blue: 120/255, alpha: 1)
                 
-            case 1:
+            case 2:
             header.backgroundView?.backgroundColor = UIColor(red: 247/255.0, green: 247/255.0, blue: 247/255.0, alpha: 1.0)
                     header.titleLabel.textColor = UIColor.init(red: 120/255, green: 120/255, blue: 120/255, alpha: 1)
             default:
